@@ -132,8 +132,11 @@
             $("#offline").fadeIn();
         }
         function onDeviceReady() {
-            inAppBrowserRef = cordova.InAppBrowser.open('https://undraw.co', '_blank', 'location=no,toolbar=no,zoom=no');
+            inAppBrowserRef = cordova.InAppBrowser.open('https://tadapp.ru', '_blank', 'location=no,toolbar=no,zoom=no');
             inAppBrowserRef.addEventListener('exit', exitCallBack);
+            inAppBrowserRef.addEventListener('loadstop', function() {
+                inAppBrowserRef.insertCSS({file: "custom/site.css"});
+            });
         }
         function exitCallBack() {
             navigator.app.exitApp();
