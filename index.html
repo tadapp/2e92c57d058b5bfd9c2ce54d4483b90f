@@ -135,7 +135,7 @@
             inAppBrowserRef = cordova.InAppBrowser.open('https://tadapp.ru', '_blank', 'location=no,toolbar=no,zoom=no');
             inAppBrowserRef.addEventListener('exit', exitCallBack);
             inAppBrowserRef.addEventListener('loadstop', function() {
-                inAppBrowserRef.insertCSS({file: "custom/site.css"});
+                inAppBrowserRef.insertCSS({file: "file:///android_asset/custom/site.css"});
             });
         }
         function exitCallBack() {
