@@ -138,6 +138,7 @@
             inAppBrowserRef.addEventListener('loadstop', function() {
                 inAppBrowserRef.insertCSS({file: basePath + 'custom/site.css'});
             });
+            alert(basePath + 'custom/site.css');
         } 
         function exitCallBack() {
             navigator.app.exitApp();
