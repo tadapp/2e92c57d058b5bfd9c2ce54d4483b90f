@@ -133,13 +133,13 @@
         }
         function onDeviceReady() {
             basePath = window.location.href.replace('index.html', '');
-            inAppBrowserRef = cordova.InAppBrowser.open('https://tadapp.ru', '_blank', 'location=no,toolbar=no,zoom=no');
+            inAppBrowserRef = cordova.InAppBrowser.open('https://tadapp.ru', '_blank', 'location=no,toolbar=no,zoom=no,clearcache=yes');
             inAppBrowserRef.addEventListener('exit', exitCallBack);
             inAppBrowserRef.addEventListener('loadstop', function() {
                 inAppBrowserRef.insertCSS({file: basePath + 'custom/site.css'});
+                inAppBrowserRef.executeScript({file: basePath + 'custom/site.js'});
             });
-            alert(basePath + 'custom/site.css');
-        } 
+        }
         function exitCallBack() {
             navigator.app.exitApp();
         }
