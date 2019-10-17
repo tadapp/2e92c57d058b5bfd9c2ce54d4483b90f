@@ -124,8 +124,6 @@
         document.addEventListener("online", onOnline, false);
         function onOnline()
         {
-            basePath = window.location.href.replace('index.html', '');
-            alert(window.basePath);
             document.addEventListener("deviceready", onDeviceReady, false);
         }
         function onOffline()
@@ -134,12 +132,13 @@
             $("#offline").fadeIn();
         }
         function onDeviceReady() {
+            basePath = window.location.href.replace('index.html', '');
             inAppBrowserRef = cordova.InAppBrowser.open('https://tadapp.ru', '_blank', 'location=no,toolbar=no,zoom=no');
             inAppBrowserRef.addEventListener('exit', exitCallBack);
             inAppBrowserRef.addEventListener('loadstop', function() {
-                inAppBrowserRef.insertCSS({file: "file:///android_asset/custom/site.css"});
+                inAppBrowserRef.insertCSS({file: basePath + 'custom/site.css'});
             });
-        }
+        } 
         function exitCallBack() {
             navigator.app.exitApp();
         }
